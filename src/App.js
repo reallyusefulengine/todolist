@@ -5,7 +5,6 @@ import TodoInput from "./components/TodoInput";
 function App() {
   return (
     <section>
-      <h1>Welcome to the App</h1>
       <TodoInput />
       <TodoList />
     </section>
