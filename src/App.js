@@ -9,7 +9,7 @@ function App() {
     <section>
       <TodoInput />
       <TodoList />
-      {id} test
+      {id} test2
     </section>
   );
 }
