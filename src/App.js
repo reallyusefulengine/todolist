@@ -2,20 +2,13 @@ import React, { Component } from "react";
 import TodoList from "../src/components/TodoList";
 import TodoInput from "./components/TodoInput";
 import { v4 as uuidv4 } from "uuid";
-import TodoItem from "./components/TodoItem";
 
 class App extends Component {
   state = {
-    items: [
-      {
-        id: uuidv4(),
-        title: "Woke up in a daze",
-      },
-      {
-        id: uuidv4(),
-        title: "Had breakfast and tea",
-      },
-    ],
+    items: [],
+    id: uuidv4(),
+    item: "",
+    editItem: false,
   };
   handleEdit = (id) => {
     console.log("handleEdit!");
@@ -32,11 +25,32 @@ class App extends Component {
   };
 
   handleChange = (e) => {
-    console.log("handleChange!");
+    const inputedValue = e.target.value;
+    this.setState({
+      item: inputedValue,
+    });
   };
+
   handleSubmit = (e) => {
-    console.log("handleSubmit!");
+    e.preventDefault();
+    const todo = {
+      id: this.state.id,
+      title: this.state.item,
+    };
+    const updatedItems = [...this.state.items, todo];
+    this.setState(
+      {
+        items: updatedItems,
+        item: "",
+        id: uuidv4(),
+        editItem: false,
+      },
+      () => {
+        console.log(this.state);
+      }
+    );
   };
+
   clearList = () => {
     console.log("Clear list!");
   };
